@@ -1,4 +1,4 @@
-package com.gymapp.service;
+package com.gymapp.facade;
 
 import com.gymapp.config.AppConfig;
 import com.gymapp.model.Trainer;
@@ -8,15 +8,15 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class TrainerServiceTest {
+class TrainerFacadeTest {
 
     private static AnnotationConfigApplicationContext context;
-    private static TrainerService trainerService;
+    private static TrainerFacade trainerFacade;
 
     @BeforeAll
     static void setup() {
         context = new AnnotationConfigApplicationContext(AppConfig.class);
-        trainerService = context.getBean(TrainerService.class);
+        trainerFacade = context.getBean(TrainerFacade.class);
     }
 
     @AfterAll
@@ -28,12 +28,12 @@ class TrainerServiceTest {
     @Order(1)
     void testCreateGeneratesUsernameAndPassword() {
         Trainer trainer = new Trainer();
-        trainer.setId("tr200");
+        trainer.setId("trf100");
         trainer.setFirstName("Diana");
         trainer.setLastName("Prince");
         trainer.setSpecialization("Yoga");
 
-        Trainer saved = trainerService.createTrainer(trainer);
+        Trainer saved = trainerFacade.createTrainer(trainer);
 
         assertNotNull(saved.getUsername(), "Username should be generated");
         assertEquals(10, saved.getPassword().length(), "Password should be 10 characters");
@@ -43,16 +43,21 @@ class TrainerServiceTest {
     @Order(2)
     void testUpdate() {
         Trainer trainer = new Trainer();
-        trainer.setId("tr201");
+        trainer.setId("trf101");
         trainer.setFirstName("Eve");
         trainer.setLastName("Adams");
         trainer.setSpecialization("Pilates");
-        trainerService.createTrainer(trainer);
+        trainerFacade.createTrainer(trainer);
 
-        trainer.setSpecialization("Updated Spec");
-        trainerService.updateTrainer(trainer);
+        trainer.setSpecialization("Updated");
+        trainerFacade.updateTrainer(trainer);
 
-        Trainer updated = trainerService.getTrainerById("tr201");
-        assertEquals("Updated Spec", updated.getSpecialization());
+        assertEquals("Updated", trainerFacade.getTrainer("trf101").getSpecialization());
+    }
+
+    @Test
+    @Order(3)
+    void testGetAllTrainers() {
+        assertFalse(trainerFacade.getAllTrainers().isEmpty(), "Should return trainers");
     }
 }
