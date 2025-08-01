@@ -1,0 +1,22 @@
+[
+  {
+    "id": "t1",
+    "firstName": "John",
+    "lastName": "Doe",
+    "username": "john.doe",
+    "password": "AbC123XyZ9",
+    "active": true,
+    "dateOfBirth": "1995-05-20",
+    "address": "123 Main St"
+  },
+  {
+    "id": "t2",
+    "firstName": "Emily",
+    "lastName": "Clark",
+    "username": "emily.clark",
+    "password": "QwErTy9876",
+    "active": true,
+    "dateOfBirth": "1998-11-12",
+    "address": "456 Oak Ave"
+  }
+]

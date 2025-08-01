@@ -1,0 +1,28 @@
+[
+  {
+    "id": "train1",
+    "trainee": {
+      "id": "t1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "username": "john.doe",
+      "password": "AbC123XyZ9",
+      "active": true,
+      "dateOfBirth": "1995-05-20",
+      "address": "123 Main St"
+    },
+    "trainer": {
+      "id": "tr1",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "username": "jane.smith",
+      "password": "ZxCvBnM123",
+      "active": true,
+      "specialization": "Cardio"
+    },
+    "trainingName": "Morning Cardio",
+    "trainingType": { "name": "Cardio" },
+    "trainingDate": "2025-08-01",
+    "trainingDuration": 60
+  }
+]

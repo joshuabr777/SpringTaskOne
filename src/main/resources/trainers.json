@@ -1,0 +1,20 @@
+[
+  {
+    "id": "tr1",
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "username": "jane.smith",
+    "password": "ZxCvBnM123",
+    "active": true,
+    "specialization": "Cardio"
+  },
+  {
+    "id": "tr2",
+    "firstName": "Mike",
+    "lastName": "Johnson",
+    "username": "mike.johnson",
+    "password": "LmNoPqR456",
+    "active": true,
+    "specialization": "Strength"
+  }
+]
