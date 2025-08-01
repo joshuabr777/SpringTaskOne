@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class AppRunner {
     private static final Logger logger = LoggerFactory.getLogger(AppRunner.class);
@@ -25,7 +27,10 @@ public class AppRunner {
             trainee.setAddress("Cloud Address");
 
             facade.createTrainee(trainee);
-            logger.info("✅ EC2 deployment successful: Trainee created with username = {}", trainee.getUsername());
+            
+            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            String message = "✅ EC2 deployment successful [" + timestamp + "] - Trainee created with username = " + trainee.getUsername();
+            logger.info(message);
         }
     }
 }
